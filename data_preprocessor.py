@@ -1,6 +1,7 @@
 # data preprocessor 
 
 from torch.utils.data import DataLoader
+from torch.utils.data import Dataset
 
 import json
 import os
@@ -8,18 +9,18 @@ import pandas as pd
 from torchvision.io import read_image
 
 class Kitti(Dataset):
-    def __init__(self, annotations_file, img_dir, transform = None, target_transform = None):
-        self.img_labels = pd.read_csv(annotations_file)
+    def __init__(self, img_dir, depth_maps, transform = None, target_transform = None):
+        self.depth_maps = depth_maps
         self.img_dir = img_dir
         self.transform = transform
         self.target_transform = target_transform
     def __len__(self):
-        return len(self.img_labels)
+        return len(self.depth_maps)
     
     def __getitem__(self, idx):
-        img_path = os.path.join(self.img_dir, self.img_lables.iloc[idx, 0])
+        img_path = os.path.join(self.img_dir, self.depth_maps.iloc[idx, 0])
         image = read_image(img_path)
-        label = self.img_labels.iloc[idx, 1]
+        label = read_image(self.depth_maps)
         if self.transform:
             image = self.transform(image)
         if self.target_transform:
@@ -43,9 +44,9 @@ def process_data(training_data, testing_data, train_file, test_file):
 def get_dict(dataloader):
     toReturn = {}
     for i in dataloader:
-        features, lables = i
+        features, labels = i
         img = features[0].squeeze()
-        label = label[0]
+        label = labels[0]
         toReturn[img] = label
     return toReturn
         
