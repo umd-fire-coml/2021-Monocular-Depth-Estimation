@@ -3,6 +3,7 @@
 from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 
+from PIL import Image
 import json
 import os
 import pandas as pd
@@ -15,16 +16,20 @@ class Kitti(Dataset):
         self.transform = transform
         self.target_transform = target_transform
     def __len__(self):
-        return len(self.depth_maps)
+        totalFiles = 0
+
+        for base, dirs, files in os.walk(self.depth_maps):
+            for Files in files:
+                totalFiles += 1
+        return totalFiles - 1
     
     def __getitem__(self, idx):
-        img_path = os.path.join(self.img_dir, self.depth_maps.iloc[idx, 0])
-        image = read_image(img_path)
-        label = read_image(self.depth_maps)
-        if self.transform:
-            image = self.transform(image)
-        if self.target_transform:
-            label = self.target_transform(label)
+        img_path = os.path.join(self.img_dir, str(idx) + '.png')
+        depth_dir = os.path.join(self.depth_maps, str(idx) + '.png')
+        #image = read_image(img_path)
+        image = Image.open(img_path)
+        label = Image.open(depth_dir)
+      
         return image, label
        
 
