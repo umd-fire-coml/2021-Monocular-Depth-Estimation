@@ -3,5 +3,4 @@ torchvision
 matplotlib
 numpy
 opencv-python
-PIL
 pandas
