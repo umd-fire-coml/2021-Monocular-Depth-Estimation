@@ -1,11 +1,10 @@
-import torch
-from torch.utils.data import Dataset
-from torch.utils.data import DataLoader
-from torchvision import datasets
-from torchvision.transforms import ToTensor
+
+import sys
 import matplotlib.pyplot as plt
+sys.path.append('src')
 from data_preprocessor import Kitti
 import pytest
+
 
 @pytest.fixture
 
@@ -18,18 +17,22 @@ def test_len(my_data_generator):
     assert my_data_generator.__len__() == 5
 
 def test_get_item(my_data_generator):
-    my_data_generator.__getitem__(0)
+    my_data_generator[0]
     assert True == True
 
 def test_display(my_data_generator):
-    img, label = my_data_generator.__getitem__(0)
+    img, label = my_data_generator[0]
     plt.imshow(img)
     plt.show()
     plt.imshow(label)
     plt.show()
+    assert True == True
+
+
+
+
     
 
-    assert True == True
 
 
 
