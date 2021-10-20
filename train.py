@@ -1,4 +1,4 @@
-#from util import batch_accuracy, show_test_result
+from util import batch_accuracy, show_test_result
 import torch
 import torch.nn as nn
 import numpy as np
@@ -47,10 +47,9 @@ def training(model, train_dataloader, val_dataloader, num_epochs, lr,
                     # TODO calculate acc for instance segmentation
                 else:
                     train_loss = criterion(prediction, label)
-                    #train_acc = batch_accuracy(prediction, label)
+                    train_acc = batch_accuracy(prediction, label)
                 train_batch_loss += train_loss.item()
                 train_epoch_loss += train_loss.item()
-                #
                 train_epoch_acc += train_acc
                 train_loss.backward()
                 optimizer.step()
@@ -68,10 +67,10 @@ def training(model, train_dataloader, val_dataloader, num_epochs, lr,
                         # TODO calculate acc for instance segmentation
                     else:
                         val_loss = criterion(validation_pred, label)
-                        #val_acc = batch_accuracy(validation_pred, label)
+                        val_acc = batch_accuracy(validation_pred, label)
                     valid_batch_loss += val_loss.item()
                     valid_epoch_loss += val_loss.item()
-                    #valid_epoch_acc  += val_acc
+                    valid_epoch_acc  += val_acc
 
             # Average accuracy
             train_epoch_acc /= len(train_dataloader)
@@ -79,7 +78,7 @@ def training(model, train_dataloader, val_dataloader, num_epochs, lr,
             if valid_epoch_acc > best_validation_acc:
                 best_validation_acc = valid_epoch_acc
                 best_model_para = copy.deepcopy(model.state_dict())
-            #pbar.set_postfix(train_loss=train_epoch_loss, train_acc=train_epoch_acc, val_loss=valid_epoch_loss, val_acc=valid_epoch_acc)
+            pbar.set_postfix(train_loss=train_epoch_loss, train_acc=train_epoch_acc, val_loss=valid_epoch_loss, val_acc=valid_epoch_acc)
             
         # save best epoch
         if not os.path.isdir("weights"):
