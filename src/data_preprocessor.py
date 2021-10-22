@@ -20,7 +20,7 @@ class Kitti(Dataset):
             for Files in files:
                 totalFiles += 1
 
-        return totalFiles - 1
+        return totalFiles
     
     def __getitem__(self, idx):
 

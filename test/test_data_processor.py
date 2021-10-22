@@ -10,11 +10,11 @@ import pytest
 
 
 def my_data_generator():
-    dataset = Kitti('images','depth_maps')
+    dataset = Kitti('dataset/images','dataset/depth_maps')
     return dataset
     
 def test_len(my_data_generator):
-    assert my_data_generator.__len__() == 5
+    assert my_data_generator.__len__() == 6
 
 def test_get_item(my_data_generator):
     my_data_generator[0]
