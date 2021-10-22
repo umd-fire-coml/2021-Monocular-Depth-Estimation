@@ -97,7 +97,7 @@ if __name__ == "__main__":
     momentum = 0.9
     batch_size = 32
     model = UNet(input_channel=3, n_classes=1)
-   train_dataloader, val_dataloader, test_dataloader, all_dataloader = preprocessing(batch_size, is_img_aug=True)
+    train_dataloader, val_dataloader, test_dataloader, all_dataloader = preprocessing(batch_size, is_img_aug=True)
     if mode == 'train':
         # util.dataloader_tester(train_dataloader, val_dataloader, test_dataloader)
         train(model,train_dataloader, val_dataloader,
