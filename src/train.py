@@ -6,12 +6,24 @@ from data_preprocessor import *
 from UNet_model import *
 from tqdm import tqdm
 from datetime import datetime
-from torchsummary import summary
+#from torchsummary import summary
 import os
 import copy
 import torch.nn.functional as F
 DEVICE = 'cuda:0'
 
+def preprocessing(batch_size, is_img_aug=True):
+
+    train_set = Kitti('dataset/images', 'dataset/depthmaps')
+    train_dataloader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True)
+    val_set = Kitti('dataset/images, dataset/depthmaps')
+    val_dataloader = torch.utils.data.DataLoader(val_set, batch_size=batch_size, shuffle=False)
+    test_set = Kitti('dataset/images, dataset/depthmaps')
+    test_dataloader = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=False)
+    all_set = Kitti('dataset/images, dataset/depthmaps')
+    all_dataloader = torch.utils.data.DataLoader(all_set, batch_size=batch_size, shuffle=True)
+
+    return train_dataloader, val_dataloader, test_dataloader, all_dataloader
 
 
 def training(model, train_dataloader, val_dataloader, num_epochs, lr,
@@ -96,18 +108,20 @@ if __name__ == "__main__":
     weight_decay = 5e-6
     momentum = 0.9
     batch_size = 32
-    model = UNet(input_channel=3, n_classes=1)
+    model = build_unet()
+	
+    # process_data has been changed - changes must be merged to main before use
     train_dataloader, val_dataloader, test_dataloader, all_dataloader = preprocessing(batch_size, is_img_aug=True)
     if mode == 'train':
         # util.dataloader_tester(train_dataloader, val_dataloader, test_dataloader)
-        train(model,train_dataloader, val_dataloader,
+        training(model,train_dataloader, val_dataloader,
                  num_epochs=num_epochs,
                  lr=lr,
                  weight_decay=weight_decay,
                  momentum=momentum,
                  batch_size=batch_size)
     elif mode == 'all':
-        train(model, all_dataloader, val_dataloader,
+        training(model, all_dataloader, val_dataloader,
                  num_epochs=num_epochs,
                  lr=lr,
                  weight_decay=weight_decay,
