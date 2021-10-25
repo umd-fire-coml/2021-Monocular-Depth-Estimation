@@ -10,7 +10,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: run_all_tests
         run: |
-          pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
           pip install -r requirements.txt
           pip install -r test-requirements.txt
           python -m pytest
