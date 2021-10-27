@@ -1,4 +1,6 @@
-torch
-torchvision
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.10.0+cpu 
+torchvision==0.11.1+cpu
 matplotlib
 numpy
+pandas
