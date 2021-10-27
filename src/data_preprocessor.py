@@ -1,14 +1,14 @@
 # data preprocessor 
-
-from torch.utils.data import Dataset
-
+import torch
+import torch.utils.data as data
+from torchvision import transforms
 from PIL import Image
 import json
 import os
 import random
 
 
-class Kitti(Dataset):
+class Kitti(data.Dataset):
     def __init__(self, img_dir, depth_maps):
         self.depth_maps = depth_maps
         self.img_dir = img_dir
@@ -25,7 +25,7 @@ class Kitti(Dataset):
     def __getitem__(self, idx):
 
         data = json.load(open('Kitti.json'))
-        print(data)
+
 
         img_path = data[str(idx)][1]
         depth_dir = data[str(idx)][0]
@@ -42,7 +42,25 @@ class Kitti(Dataset):
         image = image.crop((x, y, x + 200, y + 200))
         label = label.crop((x, y, x + 200, y + 200))
         return image, label
-        
+
+def preprocessing(batch_size, is_img_aug=True):
+
+    train_set = Kitti('dataset/images, dataset/depthmaps')
+    train_dataloader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True)
+    val_set = Kitti('dataset/images, dataset/depthmaps')
+    val_dataloader = torch.utils.data.DataLoader(val_set, batch_size=batch_size, shuffle=False)
+    test_set = Kitti('dataset/images, dataset/depthmaps')
+    test_dataloader = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=False)
+    all_set = Kitti('dataset/images, dataset/depthmaps')
+    all_dataloader = torch.utils.data.DataLoader(all_set, batch_size=batch_size, shuffle=True)
+
+    return train_dataloader, val_dataloader, test_dataloader, all_dataloader
+
+
+
+
+
+
 def get_file_number(filename):
     toReturn = ""
     for element in filename:
