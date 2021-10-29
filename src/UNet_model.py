@@ -117,7 +117,7 @@ if __name__ == "__main__":
     # y = d(p, x)
     # print(y.shape)
 
-    inputs = torch.randn((2, 3, 512, 512))
+    inputs = torch.randn((2, 3, 352, 352))
     model = build_unet()
     y = model(inputs)
     print(y.shape)

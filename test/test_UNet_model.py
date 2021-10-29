@@ -1,5 +1,7 @@
 import torch
 import torch.nn as nn
+import sys
+sys.path.append('src')
 from UNet_model import conv_block
 from UNet_model import encoder_block
 from UNet_model import decoder_block
