@@ -63,13 +63,19 @@ def preprocessing(batch_size, is_img_aug=True):
 
 
 
+
 def get_file_number(filename):
     toReturn = ""
+    foundStart = False
     for element in filename:
-        if element != "0":
+        if not foundStart:
+            if element != "0":
+                toReturn += element
+                foundStart = True
+        else:   
             toReturn += element
-
     return toReturn
+            
     
 def add_zeroes(filename, length):
     while len(filename) < length:
