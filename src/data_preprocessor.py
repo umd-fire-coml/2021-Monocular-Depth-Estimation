@@ -6,6 +6,7 @@ from PIL import Image
 import json
 import os
 import random
+import sys
 
 
 class Kitti(data.Dataset):
@@ -45,13 +46,14 @@ class Kitti(data.Dataset):
 
 def preprocessing(batch_size, is_img_aug=True):
 
-    train_set = Kitti('dataset/images', 'dataset/depthmaps')
+    sys.path.append('dataset')
+    train_set = Kitti('dataset/images', 'dataset/depth_maps')
     train_dataloader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True)
-    val_set = Kitti('dataset/images', 'dataset/depthmaps')
+    val_set = Kitti('dataset/images', 'dataset/depth_maps')
     val_dataloader = torch.utils.data.DataLoader(val_set, batch_size=batch_size, shuffle=False)
-    test_set = Kitti('dataset/images', 'dataset/depthmaps')
+    test_set = Kitti('dataset/images', 'dataset/depth_maps')
     test_dataloader = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=False)
-    all_set = Kitti('dataset/images', 'dataset/depthmaps')
+    all_set = Kitti('dataset/images', 'dataset/depth_maps')
     all_dataloader = torch.utils.data.DataLoader(all_set, batch_size=batch_size, shuffle=True)
 
     return train_dataloader, val_dataloader, test_dataloader, all_dataloader

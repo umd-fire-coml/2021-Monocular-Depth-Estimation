@@ -10,7 +10,9 @@ from datetime import datetime
 import os
 import copy
 import torch.nn.functional as F
-DEVICE = 'cuda:0'
+import sys
+# DEVICE = 'cuda:0'
+device=torch.device('cuda:0')
 
 
 def training(model, train_dataloader, val_dataloader, num_epochs, lr,
@@ -18,8 +20,8 @@ def training(model, train_dataloader, val_dataloader, num_epochs, lr,
 
     # model initialization
     number_of_class = 1
-    model = model.cuda()
-    summary(model, (3, 256, 256))
+    model = model
+    # summary(model, (3, 256, 256))
     criterion = nn.BCEWithLogitsLoss() if number_of_class == 1 else nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
    
@@ -89,7 +91,7 @@ def prediction(test_dataloader,model, weights):
     
     # model initialization
     number_of_class = 1
-    model = model.cuda()
+    model = model
     summary(model, (3, 256, 256))
     criterion = nn.BCEWithLogitsLoss() if number_of_class == 1 else nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
@@ -128,6 +130,8 @@ if __name__ == "__main__":
     model = build_unet()
 	
     # process_data has been changed - changes must be merged to main before use
+    print(os.getcwd())
+    sys.path.append('dataset')
     train_dataloader, val_dataloader, test_dataloader, all_dataloader = preprocessing(batch_size, is_img_aug=True)
     if mode == 'train':
         # util.dataloader_tester(train_dataloader, val_dataloader, test_dataloader)
