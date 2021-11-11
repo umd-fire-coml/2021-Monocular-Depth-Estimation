@@ -4,24 +4,23 @@ import torch.utils.data as data
 from torchvision import transforms
 from PIL import Image
 import json
+import numpy
 import os
 import random
 import sys
 
 
 class Kitti(data.Dataset):
-    def __init__(self, img_dir, depth_maps):
+    def __init__(self, img_dir, depth_maps, transforms=True):
         self.depth_maps = depth_maps
         self.img_dir = img_dir
+        self.transforms = transforms
         process_data(depth_maps, img_dir, 'Kitti.json')
 
     def __len__(self):
-        totalFiles = 0
-        for base, dirs, files in os.walk(self.depth_maps):
-            for Files in files:
-                totalFiles += 1
+        
 
-        return totalFiles
+        return len(json.load(open('Kitti.json')))
     
     def __getitem__(self, idx):
 
@@ -42,6 +41,10 @@ class Kitti(data.Dataset):
 
         image = image.crop((x, y, x + 200, y + 200))
         label = label.crop((x, y, x + 200, y + 200))
+
+        if self.transforms:
+            label = numpy.array(label)
+            image = numpy.array(image)
         return image, label
 
 def preprocessing(batch_size, is_img_aug=True):
@@ -91,8 +94,9 @@ def process_data(label_path, img_path, file):
     dict = {}
     count = 0
     for filename in os.listdir(label_path):
-        dict[count] = (os.path.join(label_path, filename), os.path.join(img_path, get_img_file(filename)))
-        count += 1
+        if (filename[len(filename) - 3:] == "png"):
+            dict[count] = (os.path.join(label_path, filename), os.path.join(img_path, get_img_file(filename)))
+            count += 1
     
     with open(file, "w") as outfile:
         json.dump(dict, outfile)
