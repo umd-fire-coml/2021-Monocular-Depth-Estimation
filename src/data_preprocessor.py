@@ -36,11 +36,11 @@ class Kitti(data.Dataset):
         image_width, image_height = image.size
         
 
-        x = random.randint(0, image_width - 200)
-        y = random.randint(0, image_height - 200)
+        x = random.randint(0, image_width - 256)
+        y = random.randint(0, image_height - 256)
 
-        image = image.crop((x, y, x + 200, y + 200))
-        label = label.crop((x, y, x + 200, y + 200))
+        image = image.crop((x, y, x + 256, y + 256))
+        label = label.crop((x, y, x + 256, y + 256))
 
         if self.transforms:
             
