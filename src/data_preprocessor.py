@@ -43,8 +43,13 @@ class Kitti(data.Dataset):
         label = label.crop((x, y, x + 200, y + 200))
 
         if self.transforms:
-            label = numpy.array(label)
-            image = numpy.array(image)
+            
+            label = transforms.ToTensor()(label.convert('RGB'))
+            image = transforms.ToTensor()(image.convert('RGB'))
+            label = label[:3]
+            image = image[:3]
+
+            
         return image, label
 
 def preprocessing(batch_size, is_img_aug=True):

@@ -24,7 +24,7 @@ class conv_block(nn.Module):
         x = self.conv2(x)
         x = self.bn2(x)
         x = self.relu(x)
-
+        print(x.shape)
         return x
 
 """ Encoder block:
@@ -58,6 +58,8 @@ class decoder_block(nn.Module):
 
     def forward(self, inputs, skip):
         x = self.up(inputs)
+        # print(inputs.shape)
+        # print(skip.shape)
         x = torch.cat([x, skip], axis=1)
         x = self.conv(x)
 
@@ -65,7 +67,7 @@ class decoder_block(nn.Module):
 
 
 class build_unet(nn.Module):
-    def __init__(self):
+    def __init__(self): 
         super().__init__()
 
         """ Encoder """
@@ -117,7 +119,7 @@ if __name__ == "__main__":
     # y = d(p, x)
     # print(y.shape)
 
-    inputs = torch.randn((2, 3, 352, 352))
+    inputs = torch.randn((2, 3, 200, 200))
     model = build_unet()
     y = model(inputs)
     print(y.shape)
