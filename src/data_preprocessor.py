@@ -44,10 +44,20 @@ class Kitti(data.Dataset):
 
         if self.transforms:
             
-            label = transforms.ToTensor()(label.convert('RGB'))
-            image = transforms.ToTensor()(image.convert('RGB'))
-            label = label[:3]
-            image = image[:3]
+            label = label.convert('RGB')
+            image = image.convert('RGB')
+            
+
+
+            transform = transforms.Compose([
+                        transforms.ToTensor(),
+                        transforms.Normalize(
+                                mean=[0.485, 0.456, 0.406],
+                                std=[0.229, 0.224, 0.225],
+                                ),
+                        ])
+            image = transform(image)
+            label = transform(label)
 
             
         return image, label
