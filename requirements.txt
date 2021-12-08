@@ -56,6 +56,7 @@ six                       1.16.0             pyhd3eb1b0_0
 sleef                     3.5.1                h6db0672_2    conda-forge
 sqlite                    3.33.0               hffcf06c_0  
 tk                        8.6.11               h7bc2e8c_0  
+torch-summary             1.4.5                    pypi_0    pypi
 torchvision               0.9.1           py38h0a49c68_1_cpu    conda-forge
 tornado                   6.1              py38h9ed2024_0  
 tqdm                      4.62.2             pyhd3eb1b0_1  
