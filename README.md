@@ -1,6 +1,8 @@
 # Monocular Depth Estimation
 
 ## Description
+When an RGB image is inputted to the model, it produces a depth map that displays the predicted depth of each pixel. 
+It is similar to that of a person's ability to percieve perspective, distinguishing what is far away and what is nearby. 
 
 ## Demo
 
@@ -9,33 +11,29 @@
 ## Directory Guide
 1. .github/workflows/run_all_tests.yml: runs all test cases in test directory
 
-2. dataset
+2. dataset: directory containing the training dataset
 
-depth_maps: directory containing corresponding depth maps to images in images directory
+dataset/depth_maps: directory containing corresponding depth maps to images in images directory
 
-images: directory containing images
+dataset/images: directory containing images
 
 3. src: directory containing our code
 
-UNet_model.py
+src/UNet_model.py: defines and builds the UNet model
 
-data_preprocessor.py
+src/data_preprocessor.py: preprocesses data from Kitti dataset
 
-environment.yml: a yaml file that lists required packages to install to set up the environment
+src/environment.yml: a yaml file that lists required packages to install to set up the environment
 
-model_summary.py
+src/model_summary.py: generates summary of the model
 
-train.py: trains and tests the model
+src/train.py: trains and tests the model
   
 4. test: directory containing test cases for the code in src directory
 
-5. .gitignore
+5. requirements.txt: lists out all the installed packages and version numbers
 
-6. Kitti.json
-
-7. requirements.txt: lists out all the installed packages and version numbers
-
-8. test-requirements.txt: lists out required packages to run tests
+6. test-requirements.txt: lists out required packages to run tests
 
 
 ## How to install the environment
@@ -64,6 +62,9 @@ conda deactivate
 
 ## Citations
 
+
+## USE THIS FOR REFERENCE
+## DELETE LATER
 ## How to use Conda
 1. Create Conda envrionment
 ```bash
