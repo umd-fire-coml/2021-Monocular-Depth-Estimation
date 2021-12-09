@@ -19,11 +19,9 @@ data_preprocessor.py
 
 environment.yml: a yaml file that lists required packages to install to set up the environment
 
-final_train_script.py: Similar to train.py, but contains the prediction function necessary to test the model
-
 model_summary.py
 
-train.py: trains the model
+train.py: trains and tests the model
   
 4. test: directory containing test cases
 
