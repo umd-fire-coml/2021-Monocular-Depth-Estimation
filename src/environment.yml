@@ -11,6 +11,7 @@ dependencies:
   - tqdm
   - pandas
   - pytorch-model-summary
+  - pytest
   - pip
   - pip:
     - torch-summary
