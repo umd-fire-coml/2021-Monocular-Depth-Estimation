@@ -7,10 +7,13 @@
 ## Colab notebook
 
 ## Directory Guide
-1. .github/workflows
-run_all_tests.yml: runs all test cases in test directory
+1. .github/workflows/run_all_tests.yml: runs all test cases in test directory
 
 2. dataset
+
+depth_maps: directory containing corresponding depth maps to images in images directory
+
+images: directory containing images
 
 3. src: directory containing our code
 
@@ -24,7 +27,7 @@ model_summary.py
 
 train.py: trains and tests the model
   
-4. test: directory containing test cases
+4. test: directory containing test cases for the code in src directory
 
 5. .gitignore
 
