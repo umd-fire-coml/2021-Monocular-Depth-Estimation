@@ -7,7 +7,38 @@
 ## Colab notebook
 
 ## Directory Guide
-A directory guide that provides a short description of each file in your repository.
+1. .github/workflows
+
+2. dataset
+
+3. src
+UNet_model.py
+
+data_preprocessor.py
+
+environment.yml
+  A yaml file that lists required packages to install to set up the environment.
+
+final_train_script.py
+  Similar to train.py, but contains the prediction function necessary to test the model.
+
+model_summary.py
+
+train.py
+ Trains the model.
+  
+4. test
+
+5. .gitignore
+
+6. Kitti.json
+
+7. requirements.txt
+Lists out all the installed packages and version numbers
+
+8. test-requirements.txt
+Lists out required packages to run tests
+
 
 ## How to install the environment
 1. Make sure you are in the 2021-Monocular-Depth-Estimation directory
@@ -22,7 +53,7 @@ conda env create -f src/environment.yml
 ```bash
 conda activate monocular-depth-estimation
 ```
-4. To deactivate run this command:
+4. If you need to deactivate the environment, run this command:
 ```bash
 conda deactivate
 ```
