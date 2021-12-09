@@ -1,5 +1,23 @@
 # Monocular Depth Estimation
 
+## How to install the environment
+1. Make sure you are in the 2021-Monocular-Depth-Estimation directory
+```bash
+cd 2021-Monocular-Depth-Estimation
+```
+2. To install the environment, run this command:
+```bash
+conda env create -f src/environment.yml
+```
+3. Activate the new environment with this command:
+```bash
+conda activate monocular-depth-estimation
+```
+4. To deactivate run this command:
+```bash
+conda deactivate
+```
+
 ## How to use Conda
 1. Create Conda envrionment
 ```bash
