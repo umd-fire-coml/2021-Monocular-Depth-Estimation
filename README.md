@@ -1,5 +1,14 @@
 # Monocular Depth Estimation
 
+## Description
+
+## Demo
+
+## Colab notebook
+
+## Directory Guide
+A directory guide that provides a short description of each file in your repository.
+
 ## How to install the environment
 1. Make sure you are in the 2021-Monocular-Depth-Estimation directory
 ```bash
@@ -17,6 +26,14 @@ conda activate monocular-depth-estimation
 ```bash
 conda deactivate
 ```
+
+## How to download or check the dataset
+
+## How to get the training started and get the trained weights
+
+## How to test the model and get the predicted results
+
+## Citations
 
 ## How to use Conda
 1. Create Conda envrionment
