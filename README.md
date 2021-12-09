@@ -8,6 +8,7 @@
 
 ## Directory Guide
 1. .github/workflows
+run_all_tests.yml: runs all test cases in test directory
 
 2. dataset
 
