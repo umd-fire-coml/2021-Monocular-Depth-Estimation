@@ -63,8 +63,7 @@ conda deactivate
 ## Citations
 
 
-## USE THIS FOR REFERENCE
-## DELETE LATER
+# USE THIS FOR REFERENCE - DELETE LATER:
 ## How to use Conda
 1. Create Conda envrionment
 ```bash
