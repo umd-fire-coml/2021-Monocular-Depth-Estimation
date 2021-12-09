@@ -1,5 +1,67 @@
 # Monocular Depth Estimation
 
+## Description
+
+## Demo
+
+## Colab notebook
+
+## Directory Guide
+1. .github/workflows
+
+2. dataset
+
+3. src: directory containing our code
+
+UNet_model.py
+
+data_preprocessor.py
+
+environment.yml: a yaml file that lists required packages to install to set up the environment
+
+final_train_script.py: Similar to train.py, but contains the prediction function necessary to test the model
+
+model_summary.py
+
+train.py: trains the model
+  
+4. test: directory containing test cases
+
+5. .gitignore
+
+6. Kitti.json
+
+7. requirements.txt: lists out all the installed packages and version numbers
+
+8. test-requirements.txt: lists out required packages to run tests
+
+
+## How to install the environment
+1. Make sure you are in the 2021-Monocular-Depth-Estimation directory
+```bash
+cd 2021-Monocular-Depth-Estimation
+```
+2. To install the environment, run this command:
+```bash
+conda env create -f src/environment.yml
+```
+3. Activate the new environment with this command:
+```bash
+conda activate monocular-depth-estimation
+```
+4. If you need to deactivate the environment, run this command:
+```bash
+conda deactivate
+```
+
+## How to download or check the dataset
+
+## How to get the training started and get the trained weights
+
+## How to test the model and get the predicted results
+
+## Citations
+
 ## How to use Conda
 1. Create Conda envrionment
 ```bash
