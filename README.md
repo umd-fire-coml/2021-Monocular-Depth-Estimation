@@ -11,33 +11,29 @@
 
 2. dataset
 
-3. src
+3. src: directory containing our code
+
 UNet_model.py
 
 data_preprocessor.py
 
-environment.yml
-  A yaml file that lists required packages to install to set up the environment.
+environment.yml: a yaml file that lists required packages to install to set up the environment
 
-final_train_script.py
-  Similar to train.py, but contains the prediction function necessary to test the model.
+final_train_script.py: Similar to train.py, but contains the prediction function necessary to test the model
 
 model_summary.py
 
-train.py
- Trains the model.
+train.py: trains the model
   
-4. test
+4. test: directory containing test cases
 
 5. .gitignore
 
 6. Kitti.json
 
-7. requirements.txt
-Lists out all the installed packages and version numbers
+7. requirements.txt: lists out all the installed packages and version numbers
 
-8. test-requirements.txt
-Lists out required packages to run tests
+8. test-requirements.txt: lists out required packages to run tests
 
 
 ## How to install the environment
