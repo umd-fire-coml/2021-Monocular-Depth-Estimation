@@ -15,9 +15,9 @@ It does this by evaluating the darkness of each pixel; something closer is gener
 ## Directory Guide
 1. .github/workflows/run_all_tests.yml: runs all test cases in test directory
 
-2. dataset: directory containing the training dataset
+2. dataset: directory containing the dataset
 
-dataset/depth_maps: directory containing corresponding annotated depth maps to images in images directory
+dataset/depth_maps: directory containing corresponding annotated depth maps to images in images directory (used while training)
 
 dataset/images: directory containing raw images
 
@@ -27,7 +27,7 @@ src/UNet_model.py: defines and builds the UNet model
 
 src/data_preprocessor.py: preprocesses data from Kitti dataset
 
-src/environment.yml: a yaml file that lists required packages to install to set up the environment
+src/environment.yml: a yaml file that lists necessary packages to set up the environment
 
 src/model_summary.py: generates summary of the model
 
