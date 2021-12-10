@@ -5,7 +5,10 @@ When an RGB image is inputted to the model, it produces a depth map that display
 It is similar to that of a person's ability to percieve perspective, distinguishing what is far away and what is nearby.
 It does this by evaluating the darkness of each pixel; something closer is generally lighter and something further is generally darker.
 
-For the model architecture, we chose to use a UNet model. As Purkayastha [2020] describes, "[t]his architecture consists of three sections: The contraction, The bottleneck, and the expansion section". The model we chose follows a two 3x3 convolutional layer.
+For the model architecture, we chose to use a UNet model. As Purkayastha [2020] describes, "[t]his architecture consists of three sections: The contraction, The
+bottleneck, and the expansion section". In the contraction and bottleneck portion, two 3x3 convolutional layers are applied to the input, followed by max pooling.
+The number of filters doubles and the height and width half after every block. The expansion section begins with a transpose convolution, followed by a
+concatenation with the skip connection from the encoder block. Next comes the conv_block. Here the number filters decreases by half and the height and width doubles.
 
 ## Demo
 
