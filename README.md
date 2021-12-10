@@ -7,16 +7,16 @@ It is similar to that of a person's ability to percieve perspective, distinguish
 ## Demo
 
 ## Colab notebook
-https://colab.research.google.com/drive/13TtdaET7ODnF2ewG49d50OzSDFau9qWG?usp=sharing
+[Google Colab Notebook](https://colab.research.google.com/drive/13TtdaET7ODnF2ewG49d50OzSDFau9qWG?usp=sharing)
 
 ## Directory Guide
 1. .github/workflows/run_all_tests.yml: runs all test cases in test directory
 
 2. dataset: directory containing the training dataset
 
-dataset/depth_maps: directory containing corresponding depth maps to images in images directory
+dataset/depth_maps: directory containing corresponding annotated depth maps to images in images directory
 
-dataset/images: directory containing images
+dataset/images: directory containing raw images
 
 3. src: directory containing our code
 
@@ -76,43 +76,6 @@ To download depth maps: Click [here](http://www.cvlibs.net/datasets/kitti/eval_d
 
 3. Run train.py
 
-4. predicted results will be saved in a .ph file
+4. Predicted results will be saved in a .ph file
 
 ## Citations
-
-
-# USE THIS FOR REFERENCE - DELETE LATER:
-## How to use Conda
-1. Create Conda envrionment
-```bash
-conda create --name your_env_name
-
-conda create -nname your_env_name "python==3.8" # you can specify the python version when create your envrionment
-```
-2. Activate Conda envrionment you just created
-```bash
-conda activate your_env_name  # you have to activate the envrionment before using it
-```
-3. Install packeges within the envrionment
-```bash
-conda install numpy matplotlib
-```
-4. Install pytorch according the pytorch [website](https://pytorch.org/get-started/locally/)
-5. Running python under the env. Specify the python version if you needed
-```bash
-python3.8 your_script.py
-```
-6. Deactivate your conda env
-```bash
-conda deactivate
-```
-7. check all your install packages
-```bash
-conda list
-
-conda list > requirements.txt # export all your installed packages to a file
-```
-8. check all your conda env
-``` bash
-conda env list
-```
