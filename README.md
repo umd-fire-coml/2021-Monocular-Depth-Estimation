@@ -5,7 +5,7 @@ When an RGB image is inputted to the model, it produces a depth map that display
 It is similar to that of a person's ability to percieve perspective, distinguishing what is far away and what is nearby.
 It does this by evaluating the darkness of each pixel; something closer is generally lighter and something further is generally darker.
 
-For the model architecture, we chose to use a UNet model. "This architecture consists of three sections: The contraction, The bottleneck, and the expansion section" [1]. The model we chose follows a two 3x3 convolutional layer.
+For the model architecture, we chose to use a UNet model. As Purkayastha [2020] describes, "[t]his architecture consists of three sections: The contraction, The bottleneck, and the expansion section". The model we chose follows a two 3x3 convolutional layer.
 
 ## Demo
 
