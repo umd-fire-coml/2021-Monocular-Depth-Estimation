@@ -6,13 +6,14 @@ from data_preprocessor import *
 from UNet_model import *
 from tqdm import tqdm
 from datetime import datetime
-# from torchsummary import summary
+from torchsummary import summary
 import os
 import copy
 import torch.nn.functional as F
 import sys
-# DEVICE = 'cuda:0'
-device=torch.device('cuda:0')
+import matplotlib.pyplot as plt
+DEVICE = 'cuda:0'
+# device=torch.device('cuda:0')
 
 
 def training(model, train_dataloader, val_dataloader, num_epochs, lr,
@@ -72,7 +73,7 @@ def training(model, train_dataloader, val_dataloader, num_epochs, lr,
                     valid_batch_loss += val_loss.item()
                     valid_epoch_loss += val_loss.item()
                     #valid_epoch_acc  += val_acc
-
+            best_model_para = copy.deepcopy(model.state_dict())
             # Average accuracy
             #train_epoch_acc /= len(train_dataloader)
             #valid_epoch_acc /= len(val_dataloader)
@@ -88,66 +89,39 @@ def training(model, train_dataloader, val_dataloader, num_epochs, lr,
         print(f'Best Validation Acc: {best_validation_acc}')
 
 def prediction(test_dataloader,model, weights):
-    
-    # model initialization
-    number_of_class = 1
-    model = model
-    summary(model, (3, 256, 256))
-    criterion = nn.BCEWithLogitsLoss() if number_of_class == 1 else nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
-   
-    # Run your training / validation loops
-    with tqdm(range(num_epochs), total=num_epochs, unit='Epoch') as pbar:
-        best_validation_acc = 0
-        for epoch in pbar:
-            model.train()
-
-            # training loop
-            train_epoch_loss = 0
-            valid_epoch_loss = 0
-            #train_epoch_acc = 0
-            #valid_epoch_acc = 0
-
-            for batch_num, batch in enumerate(train_dataloader):
-                train_batch_loss = 0
-                img, label = batch
-                # img, label = img.to(DEVICE), label.to(DEVICE)
-                optimizer.zero_grad()
-                prediction = model(img.float())
-            return prediction
-
-
-if __name__ == "__main__":
-
-    mode = "train"
-
-    # define Hyper-parameters:
-    num_epochs = 200
-    lr = 7e-2
-    weight_decay = 5e-6
-    momentum = 0.9
-    batch_size = 32
-    model = build_unet()
-	
-    # process_data has been changed - changes must be merged to main before use
+    nick_name = "tuge0"
     print(os.getcwd())
-    sys.path.append('dataset')
-    train_dataloader, val_dataloader, test_dataloader, all_dataloader = preprocessing(batch_size, is_img_aug=True)
-    if mode == 'train':
-        # util.dataloader_tester(train_dataloader, val_dataloader, test_dataloader)
-        training(model,train_dataloader, val_dataloader,
-                 num_epochs=num_epochs,
-                 lr=lr,
-                 weight_decay=weight_decay,
-                 momentum=momentum,
-                 batch_size=batch_size)
-    elif mode == 'test':
-        prediction(test_dataloader, model, "")
-        show_test_result("")
-    elif mode == 'all':
-        training(model, all_dataloader, val_dataloader,
-                 num_epochs=num_epochs,
-                 lr=lr,
-                 weight_decay=weight_decay,
-                 momentum=momentum,
-                 batch_size=batch_size)
+    weights_path = os.path.join("weights", weights)
+    if not os.path.isfile(weights_path):
+        raise Exception("weights file not found")
+    model.cuda()
+    model.eval()
+    model.load_state_dict(torch.load(weights_path))
+    result = []
+    with tqdm(test_dataloader, unit='img') as pbar:
+        for img in pbar:
+            with torch.no_grad():
+                img = img.to(DEVICE)
+                image = img[10]
+                image = image.cpu().numpy()
+                plt.imshow(image.transpose(1,2,0))
+                plt.show()
+                pred = model(img)
+                temp = pred.cpu().numpy()
+                temp = temp[10]
+                
+
+                plt.imshow(temp.transpose(1,2,0))
+                plt.show()
+              
+                if len(result) == 0:
+                    result = torch.unsqueeze(pred, 0)
+                    result = torch.squeeze(pred,1)
+                else:
+                    result = torch.cat((result, pred), 0)
+                break
+    print(f'prediction result: {result.shape}')
+    sigmoid = torch.sigmoid(result)
+    sigmoid[result > 0.5] = 1
+    sigmoid[result <= 0.5] = 0
+    torch.save(sigmoid, f'{nick_name}.pth')
