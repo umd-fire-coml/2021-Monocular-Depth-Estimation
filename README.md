@@ -5,7 +5,7 @@ When an RGB image is inputted to the model, it produces a depth map that display
 It is similar to that of a person's ability to percieve perspective, distinguishing what is far away and what is nearby.
 It does this by evaluating the darkness of each pixel; something closer is generally lighter and something further is generally darker.
 
-(Architecture description)
+For the model architecture, we chose to use a UNet model. "This architecture consists of three sections: The contraction, The bottleneck, and the expansion section" [1]. The model we chose follows a two 3x3 convolutional layer.
 
 ## Demo
 
@@ -82,7 +82,7 @@ To download depth maps: Click [here](http://www.cvlibs.net/datasets/kitti/eval_d
 4. Predicted results will be saved in a .ph file
 
 ## Citations
-Monimoy Purkayastha. 2020. Monocular Depth Estimation and Background/Foreground Extraction using UNet Deep Learning Architecture. (July 2020). Retrieved December 10, 2021 from https://medium.com/analytics-vidhya/monocular-depth-estimation-and-background-foreground-extraction-using-unet-deep-learning-bdfd19909aca 
+[1] Monimoy Purkayastha. 2020. Monocular Depth Estimation and Background/Foreground Extraction using UNet Deep Learning Architecture. (July 2020). Retrieved December 10, 2021 from https://medium.com/analytics-vidhya/monocular-depth-estimation-and-background-foreground-extraction-using-unet-deep-learning-bdfd19909aca 
 
 Code References:
 [TransDepth](https://github.com/syKevinPeng/TransDepth)
