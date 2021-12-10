@@ -1,0 +1,19 @@
+name: monocular-depth-estimation
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - matplotlib
+  - numpy
+  - tqdm
+  - pytorch
+  - torchvision
+  - tqdm
+  - pandas
+  - pytorch-model-summary
+  - pytest
+  - pip
+  - pip:
+    - torch-summary
+
+
