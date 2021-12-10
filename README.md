@@ -65,7 +65,6 @@ conda activate monocular-depth-estimation
 conda deactivate
 ```
 
-<<<<<<< final_stuff
 ## How to download or check the dataset
 To download raw data: Click [here](http://www.cvlibs.net/datasets/kitti/raw_data.php) and download the raw data download script and run the .sh file
 
@@ -95,16 +94,6 @@ To download depth maps: Click [here](http://www.cvlibs.net/datasets/kitti/eval_d
 [2] Bala Manikandan. 2021. Monocular depth estimation using U-Net. (July 2021). Retrieved December 10, 2021 from https://medium.com/mlearning-ai/monocular-depth-estimation-using-u-net-6f149fc34077 
 
 Code References:
-
-=======
-conda list > requirements.txt # export all your installed packages to a file
-```
-8. check all your conda env
-``` bash
-conda env list
-```
-## References
->>>>>>> main
 [TransDepth](https://github.com/syKevinPeng/TransDepth)
 
 [UNet](https://github.com/syKevinPeng/UNet)
