@@ -82,3 +82,8 @@ To download depth maps: Click [here](http://www.cvlibs.net/datasets/kitti/eval_d
 4. Predicted results will be saved in a .ph file
 
 ## Citations
+[TransDepth](https://github.com/syKevinPeng/TransDepth)
+
+[UNet](https://github.com/syKevinPeng/UNet)
+
+[nikhilroxtomar](https://github.com/nikhilroxtomar/Semantic-Segmentation-Architecture/blob/main/PyTorch/unet.py)
