@@ -12,6 +12,10 @@ For the model architecture, we chose to use a UNet model. It was first proposed 
 In this demo, our predicted results is a black picture. This is due to the time constraint we had to train. 
 Because we did not have enough time to train our model, the results are as they are; however, with more time, our results would have been better.
 
+
+https://user-images.githubusercontent.com/60985308/145638324-f7cc404d-e327-4e24-b335-5d89d3bd447a.mp4
+
+
 ## Colab notebook
 [Google Colab Notebook](https://colab.research.google.com/drive/13TtdaET7ODnF2ewG49d50OzSDFau9qWG?usp=sharing)
 
