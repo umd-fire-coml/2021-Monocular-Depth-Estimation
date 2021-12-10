@@ -38,3 +38,5 @@ conda env list
 [TransDepth](https://github.com/syKevinPeng/TransDepth)
 
 [UNet](https://github.com/syKevinPeng/UNet)
+
+[nikhilroxtomar](https://github.com/nikhilroxtomar/Semantic-Segmentation-Architecture/blob/main/PyTorch/unet.py)
