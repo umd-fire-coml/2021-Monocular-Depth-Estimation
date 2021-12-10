@@ -2,7 +2,10 @@
 
 ## Description
 When an RGB image is inputted to the model, it produces a depth map that displays the predicted depth of each pixel. 
-It is similar to that of a person's ability to percieve perspective, distinguishing what is far away and what is nearby. 
+It is similar to that of a person's ability to percieve perspective, distinguishing what is far away and what is nearby.
+It does this by evaluating the darkness of each pixel; something closer is generally lighter and something further is generally darker.
+
+(Architecture description)
 
 ## Demo
 
