@@ -59,7 +59,7 @@ conda deactivate
 To download raw data: Click [here](http://www.cvlibs.net/datasets/kitti/raw_data.php) and download the raw data download script and run the .sh file
 ```bash
 To download depth maps: Click [here](http://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_prediction) and download the annotated depth maps dataset
-
+```
 ## How to get the training started and get the trained weights
 1. Open train.py
 ```bash
@@ -68,7 +68,7 @@ To download depth maps: Click [here](http://www.cvlibs.net/datasets/kitti/eval_d
 3. Run train.py
 ```bash
 4. Trained weights will be saved in a folder named "weights"
-
+```
 ## How to test the model and get the predicted results
 1. Open train.py
 ```bash
@@ -77,6 +77,7 @@ To download depth maps: Click [here](http://www.cvlibs.net/datasets/kitti/eval_d
 3. Run train.py
 ```bash
 4. predicted results will be saved in a .ph file
+```
 ## Citations
 
 
