@@ -116,8 +116,3 @@ def process_data(label_path, img_path, file):
     
     with open(file, "w") as outfile:
         json.dump(dict, outfile)
-    
-
-
-    
-        
