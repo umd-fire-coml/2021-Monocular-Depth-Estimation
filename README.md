@@ -87,6 +87,8 @@ To download depth maps: Click [here](http://www.cvlibs.net/datasets/kitti/eval_d
 ## Citations
 [1] Monimoy Purkayastha. 2020. Monocular Depth Estimation and Background/Foreground Extraction using UNet Deep Learning Architecture. (July 2020). Retrieved December 10, 2021 from https://medium.com/analytics-vidhya/monocular-depth-estimation-and-background-foreground-extraction-using-unet-deep-learning-bdfd19909aca 
 
+[2] Bala Manikandan. 2021. Monocular depth estimation using U-Net. (July 2021). Retrieved December 10, 2021 from https://medium.com/mlearning-ai/monocular-depth-estimation-using-u-net-6f149fc34077 
+
 Code References:
 
 [TransDepth](https://github.com/syKevinPeng/TransDepth)
