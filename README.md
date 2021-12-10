@@ -5,8 +5,7 @@ When an RGB image is inputted to the model, it produces a depth map that display
 It is similar to that of a person's ability to percieve perspective, distinguishing what is far away and what is nearby.
 It does this by evaluating the darkness of each pixel; something closer is generally lighter and something further is generally darker.
 
-For the model architecture, we chose to use a UNet model. As Purkayastha [2020] describes, "[t]his architecture consists of three sections: The contraction, The
-bottleneck, and the expansion section". 
+For the model architecture, we chose to use a UNet model. It was first proposed for abnormality localization in medical images that used convolutional networks for Biomedical Image Segmentation. As Manikandan [2021] explained, it has the ability for pixel-level localization and distinguishes unique patterns. It also has a 'U' shaped structure with the first half being an encoder and the last half being a decoder. Purkayastha [2020] also described that, "[t]his architecture consists of three sections: The contraction, The bottleneck, and the expansion section". 
 
 ## Demo
 
